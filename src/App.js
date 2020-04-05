@@ -1,10 +1,14 @@
 import React from 'react';
 
-function App() {
+import HomePage from './pages/HomePage';
+import HotelListPage from './pages/HotelListPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>My Hotel Trip</h1>
-    </div>
+    <>
+      <HomePage />
+      <HotelListPage />
+    </>
   );
 }
 

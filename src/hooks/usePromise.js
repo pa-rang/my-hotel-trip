@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 const usePromise = (promiseCreator, deps) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const getData = async () => {
     setLoading(true);
@@ -12,7 +12,8 @@ const usePromise = (promiseCreator, deps) => {
       const json = await response.json();
       setData(json);
     } catch (error) {
-      setError(error);
+      console.log("Error: ", error);
+      setError(true);
     }
     setLoading(false);
   }
@@ -21,7 +22,7 @@ const usePromise = (promiseCreator, deps) => {
     getData();
   }, deps);
 
-  return [data, loading, error];
+  return { data, loading, error };
 }
 
 export default usePromise;

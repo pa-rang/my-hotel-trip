@@ -12,4 +12,6 @@ const HotelList = ({ id, name, freeServices, imageUrl, reviewScore, totalReviewC
   );
 };
 
+// propTypes 추가하기
+
 export default HotelList;

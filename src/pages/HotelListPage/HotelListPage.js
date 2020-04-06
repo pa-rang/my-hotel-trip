@@ -10,18 +10,16 @@ const getHotelList = () => {
   return response;
 };
 
-
-
 const HotelListPage = () => {
-  const { data, loading, error } = usePromise(getHotelList, []);
+  const { data, loading, error, handleRetry } = usePromise(getHotelList);
   console.log(data, loading, error);
 
   return (
     <div>
       <h1>HotelListPage</h1>
+      <button onClick={handleRetry}>새로고침</button>
       <div>{loading && "Loading..."}</div>
-      <div>{error && "Error"}</div>
-      <div>{Array.isArray(data) ? data.map(hotel => (
+      <div>{!error ? data.map(hotel => (
         <HotelList
           key={hotel.id}
           id={hotel.id}
@@ -31,7 +29,7 @@ const HotelListPage = () => {
           reviewScore={hotel.reviewScore}
           totalReviewCount={hotel.totalReviewCount}
         />
-      )) : "Data is not Array"}</div>
+      )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
     </div>
   );
 };

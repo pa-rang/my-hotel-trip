@@ -1,28 +1,43 @@
 import { useState, useEffect } from 'react';
 
-const usePromise = (promiseCreator, deps) => {
+const usePromise = (promiseCreator) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  const handleRetry = () => {
+    setRetryCount(retryCount+1)
+    console.log(retryCount);
+  }
 
   const getData = async () => {
+    setError(false); // 초기화
+
     setLoading(true);
     try {
       const response = await promiseCreator();
       const json = await response.json();
-      setData(json);
-    } catch (error) {
-      console.log("Error: ", error);
+      if (!Array.isArray(json)) {
+        // json : {message: "error! retry please."}
+        console.log("json is not array");
+        setError(true);
+      } else {
+        setData(json);
+      };
+    } catch (e) {
+      console.log("Error: ", e);
       setError(true);
-    }
-    setLoading(false);
-  }
+    } finally {
+      setLoading(false);
+    };
+  };
 
   useEffect(() => {
     getData();
-  }, deps);
+  }, [retryCount]);
 
-  return { data, loading, error };
+  return { data, loading, error, handleRetry };
 }
 
 export default usePromise;

@@ -12,7 +12,9 @@ const usePromise = (promiseCreator) => {
   }
 
   const getData = async () => {
-    setError(false); // 초기화
+    // 초기화
+    setData([]);
+    setError(false);
 
     setLoading(true);
     try {

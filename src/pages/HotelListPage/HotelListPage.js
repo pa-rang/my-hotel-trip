@@ -10,6 +10,14 @@ const getHotelList = () => {
   return response;
 };
 
+// 작동안함 왜???
+const getHotelPrice = async (hotelIds) => {
+  const response = await fetch(`${BASE_URL}/hotel-prices?ids=${hotelIds}`);
+  const json = response.json();
+  console.log("json", json);
+  return json;
+}
+
 const HotelListPage = () => {
   const { data, loading, error, handleRetry } = usePromise(getHotelList);
   console.log(data, loading, error);
@@ -17,7 +25,7 @@ const HotelListPage = () => {
   return (
     <div>
       <h1>HotelListPage</h1>
-      <button onClick={handleRetry}>새로고침</button>
+      {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
       <div>{loading && "Loading..."}</div>
       <div>{!error ? data.map(hotel => (
         <HotelList

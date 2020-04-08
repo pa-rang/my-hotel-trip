@@ -2,7 +2,7 @@ import React from 'react';
 
 const HotelList = ({ id, name, freeServices, imageUrl, reviewScore, totalReviewCount }) => {
   return (
-    <div>
+    <div style={{ border: "1px solid #363636"}}>
       <div>{name}</div>
       <div>{freeServices}</div>
       <img src={imageUrl} alt={name} title={name} style={{ width: "200px" }}/>

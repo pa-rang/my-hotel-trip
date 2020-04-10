@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HotelList = ({ id, name, freeServices, imageUrl, reviewScore, totalReviewCount }) => {
   return (
@@ -12,6 +13,14 @@ const HotelList = ({ id, name, freeServices, imageUrl, reviewScore, totalReviewC
   );
 };
 
-// propTypes 추가하기
+// Type checking with propTypes
+HotelList.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  freeServices: PropTypes.array.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  reviewScore: PropTypes.number.isRequired,
+  totalReviewCount: PropTypes.number.isRequired
+}
 
 export default HotelList;

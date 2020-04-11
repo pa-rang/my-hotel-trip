@@ -27,17 +27,20 @@ const HotelListPage = () => {
       <h1>HotelListPage</h1>
       {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
       <div>{loading && "Loading..."}</div>
-      <div>{!error ? data.map(hotel => (
-        <HotelList
-          key={hotel.id}
-          id={hotel.id}
-          name={hotel.name}
-          freeServices={hotel.freeServices}
-          imageUrl={hotel.imageUrl}
-          reviewScore={hotel.reviewScore}
-          totalReviewCount={hotel.totalReviewCount}
-        />
-      )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
+      <div className="scroll-container">
+        <div>{!error ? data.map(hotel => (
+          <HotelList
+            key={hotel.id}
+            id={hotel.id}
+            name={hotel.name}
+            freeServices={hotel.freeServices}
+            imageUrl={hotel.imageUrl}
+            rate={hotel.rate}
+            reviewScore={hotel.reviewScore}
+            totalReviewCount={hotel.totalReviewCount}
+          />
+        )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
+      </div>
     </div>
   );
 };

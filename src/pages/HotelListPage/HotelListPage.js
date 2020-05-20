@@ -1,22 +1,18 @@
 import React from 'react';
 
-import usePromise from '../../hooks/usePromise';
-import HotelList from '../../components/HotelList';
+import usePromise from 'hooks/usePromise';
+import HotelList from 'components/HotelList';
+import HotelFilter from 'components/HotelFilter';
+import RecentView from 'components/RecentView';
 
 const BASE_URL = "https://x0ofq07ykl.execute-api.ap-northeast-2.amazonaws.com/dev";
+const page = 3;
+const filter_condition = null;
 
 const getHotelList = () => {
-  const response = fetch(`${BASE_URL}/hotels`);
+  const response = fetch(`${BASE_URL}/hotels?page=${page}&filters=${filter_condition}`);
   return response;
 };
-
-// 작동안함 왜???
-const getHotelPrice = async (hotelIds) => {
-  const response = await fetch(`${BASE_URL}/hotel-prices?ids=${hotelIds}`);
-  const json = response.json();
-  console.log("json", json);
-  return json;
-}
 
 const HotelListPage = () => {
   const { data, loading, error, handleRetry } = usePromise(getHotelList);
@@ -25,7 +21,17 @@ const HotelListPage = () => {
   return (
     <div>
       <h1>HotelListPage</h1>
-      {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
+      
+      <HotelFilter />
+      <RecentView />
+      <HotelList
+        error={error}
+        loading={loading}
+        handleRetry={handleRetry}
+        data={data}
+      />
+
+      {/* {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
       <div>{loading && "Loading..."}</div>
       <div className="scroll-container">
         <div>{!error ? data.map(hotel => (
@@ -40,7 +46,7 @@ const HotelListPage = () => {
             totalReviewCount={hotel.totalReviewCount}
           />
         )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
-      </div>
+      </div> */}
     </div>
   );
 };

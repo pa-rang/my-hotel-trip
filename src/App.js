@@ -8,8 +8,8 @@ import NotFound from './pages/NotFound';
 const App = () => {
   return (
     <Switch>
-      <Route path="/web" exact component={HomePage} />
-      <Route path="/web/hotels" component={HotelListPage} />
+      <Route path="/" exact component={HomePage} />
+      <Route path="/hotels" component={HotelListPage} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -14,40 +14,22 @@ const getHotelList = () => {
   return response;
 };
 
-const HotelListPage = () => {
+function HotelListPage() {
   const { data, loading, error, handleRetry } = usePromise(getHotelList);
   console.log(data, loading, error);
 
   return (
-    <div>
+    <>
       <h1>HotelListPage</h1>
-      
-      {/* <HotelFilter />
+      <HotelFilter />
       <RecentView />
-      <HotelList
-        error={error}
+      <HotelList 
         loading={loading}
+        error={error}
         handleRetry={handleRetry}
         data={data}
-      /> */}
-
-      {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
-      <div>{loading && "Loading..."}</div>
-      <div className="scroll-container">
-        <div>{!error ? data.map(hotel => (
-          <HotelList
-            key={hotel.id}
-            id={hotel.id}
-            name={hotel.name}
-            freeServices={hotel.freeServices}
-            imageUrl={hotel.imageUrl}
-            rate={hotel.rate}
-            reviewScore={hotel.reviewScore}
-            totalReviewCount={hotel.totalReviewCount}
-          />
-        )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
-      </div>
-    </div>
+      />
+    </>
   );
 };
 

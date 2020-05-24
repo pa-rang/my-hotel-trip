@@ -6,7 +6,7 @@ const HotelList = ({ id, name, freeServices, imageUrl, rate, reviewScore, totalR
 
   // lazy Loading
   const lazyLoadRef = useRef();
-  const lazyLoadOption = { root: null, threshold: 0.5 };
+  const lazyLoadOption = { root: null, threshold: 0.8 };
   const lazyLoadhandler = (entries, observer) => {
     const { target } = entries[0];
     if (entries[0].isIntersecting) {
@@ -15,6 +15,7 @@ const HotelList = ({ id, name, freeServices, imageUrl, rate, reviewScore, totalR
     }
   };
   const lazyLoadObserver = new IntersectionObserver(lazyLoadhandler, lazyLoadOption);
+  
   useEffect(() => {
     lazyLoadObserver.observe(lazyLoadRef.current);
   }, [])

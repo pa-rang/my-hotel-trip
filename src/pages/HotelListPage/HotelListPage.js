@@ -22,16 +22,16 @@ const HotelListPage = () => {
     <div>
       <h1>HotelListPage</h1>
       
-      <HotelFilter />
+      {/* <HotelFilter />
       <RecentView />
       <HotelList
         error={error}
         loading={loading}
         handleRetry={handleRetry}
         data={data}
-      />
+      /> */}
 
-      {/* {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
+      {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
       <div>{loading && "Loading..."}</div>
       <div className="scroll-container">
         <div>{!error ? data.map(hotel => (
@@ -46,7 +46,7 @@ const HotelListPage = () => {
             totalReviewCount={hotel.totalReviewCount}
           />
         )) : <button onClick={handleRetry}>다시 불러오기</button>}</div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import HotelItem from 'components/HotelItem'
 
-function HotelList({ loading, error, handleRetry, data}) {
+function HotelList({ loading, error, handleRetry, hotelList}) {
 
   return (
     <>
@@ -10,7 +10,7 @@ function HotelList({ loading, error, handleRetry, data}) {
       <div>{loading && "Loading..."}</div>
       {error
         ? <button onClick={handleRetry}>다시 불러오기</button> 
-        : data.map(hotel => (
+        : hotelList.map(hotel => (
           <HotelItem
             key={hotel.id}
             id={hotel.id}

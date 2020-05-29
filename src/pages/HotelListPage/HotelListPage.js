@@ -27,7 +27,7 @@ function HotelListPage() {
         loading={loading}
         error={error}
         handleRetry={handleRetry}
-        data={data}
+        hotelList={data}
       />
     </>
   );

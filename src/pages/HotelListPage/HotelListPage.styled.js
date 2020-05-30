@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Page = styled.section`
-  width: 900px;
+  width: 1072px;
   display: flex;
   margin: auto;
   padding: 120px 0 80px 0;
@@ -15,4 +15,5 @@ export const Page = styled.section`
 Page.Body = styled.div`
   display: flex;
   flex-direction: column;
+  width: 780px;
 `;

@@ -1,11 +1,12 @@
 import React from 'react';
 
 import HotelItem from 'components/HotelItem'
+import { HotelListContainer } from './HotelList.styled';
 
 function HotelList({ loading, error, handleRetry, hotelList}) {
 
   return (
-    <>
+    <HotelListContainer>
       {(!error && !loading) && <button onClick={handleRetry}>새로고침</button>}
       <div>{loading && "Loading..."}</div>
       {error
@@ -22,8 +23,8 @@ function HotelList({ loading, error, handleRetry, hotelList}) {
             totalReviewCount={hotel.totalReviewCount}
           />
       ))}
-    </>
+    </HotelListContainer>
   );
-};
+}
 
 export default HotelList;

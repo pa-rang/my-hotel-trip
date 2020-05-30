@@ -4,7 +4,7 @@ import usePromise from 'hooks/usePromise';
 import HotelList from 'components/HotelList';
 import HotelFilter from 'components/HotelFilter';
 import RecentView from 'components/RecentView';
-import { Page } from './HotelList.styled';
+import { Page } from './HotelListPage.styled';
 
 const BASE_URL = "https://x0ofq07ykl.execute-api.ap-northeast-2.amazonaws.com/dev";
 const page = 3;

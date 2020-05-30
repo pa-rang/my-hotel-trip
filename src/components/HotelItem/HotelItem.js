@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from 'icons/default-image.png';
+import { HotelItemWrapper } from './HotelItem.styled';
 
 const HotelItem = ({ name, freeServices, imageUrl, rate, reviewScore, totalReviewCount }) => {
   // lazy Loading
@@ -20,18 +21,15 @@ const HotelItem = ({ name, freeServices, imageUrl, rate, reviewScore, totalRevie
   // }, [])
 
   return(
-    <>
-      <h1>Hotel Item</h1>
-      <div style={{ border: "1px solid #363636", margin: "24px", width: "480px" }}>
-        <div>{name}</div>
-        <div>{freeServices}</div>
-        {/* <img ref={lazyLoadRef} src={defaultImage} data-src={imageUrl} alt={name} title={name} style={{ width: "200px", height: "200px" }} /> */}
-        <img src={defaultImage} data-src={imageUrl} alt={name} title={name} style={{ width: "200px", height: "200px" }} />
-        <div>{rate}</div>
-        <div>{reviewScore}</div>
-        <div>{totalReviewCount}</div>
-      </div>
-    </>
+    <HotelItemWrapper>
+      <div>{name}</div>
+      <div>{freeServices}</div>
+      {/* <img ref={lazyLoadRef} src={defaultImage} data-src={imageUrl} alt={name} title={name} style={{ width: "200px", height: "200px" }} /> */}
+      <img src={defaultImage} data-src={imageUrl} alt={name} title={name} style={{ width: "200px", height: "200px" }} />
+      <div>{rate}</div>
+      <div>{reviewScore}</div>
+      <div>{totalReviewCount}</div>
+    </HotelItemWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HotelItem from 'components/HotelItem'
+import HotelItem from '../HotelItem'
 import { HotelListContainer } from './HotelList.styled';
 
 function HotelList({ loading, error, handleRetry, hotelList}) {

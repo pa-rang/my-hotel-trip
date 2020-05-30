@@ -25,7 +25,7 @@ const HotelItem = ({ name, freeServices, imageUrl, rate, reviewScore, totalRevie
       <HotelImage ref={lazyLoadRef} src={defaultImage} data-src={imageUrl} alt={name} title={name} />
       {/* <img src={defaultImage} data-src={imageUrl} alt={name} title={name} style={{ width: "200px", height: "200px" }} /> */}
       <HotelInfo>
-        <div>{name}</div>
+        <HotelInfo.Title>{name}</HotelInfo.Title>
         <div>{freeServices}</div>
         <div>{rate}</div>
         <div>{reviewScore}</div>

@@ -6,7 +6,9 @@ const HomePage = React.lazy(() => import('./pages/HomePage'));
 const HotelListPage = React.lazy(() => import('./pages/HotelListPage'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
-const App = () => (
+interface AppProps {}
+
+const App: React.FC<AppProps> = () => (
   <ErrorBoundary>
     <Suspense fallback={<h1 style={{ color: "red" }}>loading...</h1>}>
       <Switch>

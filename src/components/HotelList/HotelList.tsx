@@ -3,7 +3,14 @@ import React from 'react';
 import HotelItem from '../HotelItem'
 import { HotelListContainer } from './HotelList.styled';
 
-function HotelList({ loading, error, handleRetry, hotelList}) {
+export type HotelListProps = {
+  loading: boolean;
+  error: boolean;
+  handleRetry: any;
+  hotelList?: any;
+}
+
+function HotelList({ loading, error, handleRetry, hotelList}: HotelListProps) {
 
   return (
     <HotelListContainer>
@@ -11,7 +18,7 @@ function HotelList({ loading, error, handleRetry, hotelList}) {
       <div>{loading && "Loading..."}</div>
       {error
         ? <button onClick={handleRetry}>다시 불러오기</button> 
-        : hotelList.map(hotel => (
+        : hotelList.map((hotel: any) => (
           <HotelItem
             key={hotel.id}
             id={hotel.id}
